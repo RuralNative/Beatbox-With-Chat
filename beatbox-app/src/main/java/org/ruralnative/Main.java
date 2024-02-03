@@ -2,6 +2,7 @@ package org.ruralnative;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        MusicTest1 musicTest = new MusicTest1();
+        musicTest.play();
     }
 }
