@@ -14,13 +14,13 @@ public class MusicTest1 {
             Track track = sequence.createTrack();
 
             ShortMessage messageOne = new ShortMessage();
-            messageOne.setMessage(144, 1, 44, 100);
+            messageOne.setMessage(144, 1, 1, 100);
             MidiEvent noteOn = new MidiEvent(messageOne, 1);
             track.add(noteOn);
 
             ShortMessage messageTwo = new ShortMessage();
             messageTwo.setMessage(128, 1, 44, 100);
-            MidiEvent noteOff = new MidiEvent(messageTwo, 16);
+            MidiEvent noteOff = new MidiEvent(messageTwo, 32);
             track.add(noteOff);
 
             player.setSequence(sequence);
