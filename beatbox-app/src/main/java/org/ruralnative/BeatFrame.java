@@ -1,12 +1,17 @@
 package org.ruralnative;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class BeatFrame {
+public class BeatFrame implements ActionListener {
 
-    public static void createFrame() {
-        JFrame frame = new JFrame();
-        JButton button = new JButton("Click Me");
+    private JFrame frame;
+    private JButton button;
+
+    public void createFrame() {
+        frame = new JFrame();
+        createButton();
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -15,5 +20,17 @@ public class BeatFrame {
         frame.setSize(300, 300);
 
         frame.setVisible(true);
+    }
+
+    private void createButton() {
+        button = new JButton("Click Me");
+        button.addActionListener(this);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        button.setText("I was CLICKED!!");
+        MusicTest1 test = new MusicTest1();
+        test.play();
     }
 }
