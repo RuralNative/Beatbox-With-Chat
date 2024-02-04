@@ -1,4 +1,4 @@
-package org.ruralnative.ui;
+package org.ruralnative.ui.beatbox;
 
 import javax.swing.*;
 

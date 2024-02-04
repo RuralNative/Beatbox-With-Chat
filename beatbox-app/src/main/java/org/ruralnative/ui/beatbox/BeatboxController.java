@@ -1,6 +1,6 @@
-package org.ruralnative.ui;
+package org.ruralnative.ui.beatbox;
 
-import javax.sound.midi.*;
+import org.ruralnative.ui.MidiPlayer;
 
 public class BeatboxController {
 
