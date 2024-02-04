@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="928d2191-848c-4b62-8eba-dea2f206dc3c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/ruralnative/DrawPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/ruralnative/SimpleGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/ruralnative/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ruralnative/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
