@@ -8,11 +8,8 @@ class BeatboxView extends JFrame {
 
     public BeatboxView() {
         super("Beat Box App");
-        button = new JButton("Click Me");
-        add(button);
 
-        setSize(300, 300);
-        pack();
+        setSize(500, 500);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
