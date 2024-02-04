@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class BeatUI {
+    BeatboxController controller;
     //Serves as the container for all the checkboxes of the instruments
     JPanel mainPanel;
     //Store checkboxes in a List for index referencing
@@ -17,45 +18,9 @@ public class BeatUI {
     Track track;
     JFrame frame;
 
-    //Used for Label text inside the nameBox
-    String[] instrumentNames = {
-            "Bass Drum",
-            "Closed Hi-hat",
-            "Open Hi-hat",
-            "Acoustic Snare",
-            "Crash Cymbal",
-            "Hand Clap",
-            "High Tom",
-            "High Bongo",
-            "Maracas",
-            "Whistle",
-            "Low Conga",
-            "Cowbell",
-            "Vibraslap",
-            "Low-mid Tom",
-            "High Agogo",
-            "Open Hi Conga"
-    };
+    public BeatUI() {
 
-    // Used to determine type of instrument as argument for setMessage() channel
-    int[] instruments = {
-            35,
-            42,
-            46,
-            38,
-            49,
-            39,
-            50,
-            60,
-            70,
-            72,
-            64,
-            56,
-            58,
-            47,
-            67,
-            63
-    };
+    }
 
     public void buildGUI() {
         frame = new JFrame("Cyber Beatbox");
@@ -85,7 +50,7 @@ public class BeatUI {
 
         Box nameBox = new Box(BoxLayout.Y_AXIS);
         for (int i = 0; i < 16; i++) {
-            nameBox.add(new Label(instrumentNames[i]));
+            nameBox.add(new Label(controller.getInstrumentName(i)));
         }
 
         background.add(BorderLayout.EAST, buttonBox);
@@ -134,7 +99,7 @@ public class BeatUI {
         for (int i = 0; i < 16; i++) {
             trackList = new int[16];
 
-            int key = instruments[i];
+            int key = controller.getInstrument(i);
 
             for (int j = 0; j < 16; j++) {
                 JCheckBox jc = (JCheckBox) checkBoxList.get(j + (16*i));

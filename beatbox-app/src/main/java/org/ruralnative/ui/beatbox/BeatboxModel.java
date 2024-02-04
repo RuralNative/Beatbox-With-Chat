@@ -44,7 +44,11 @@ public class BeatboxModel {
             63
     };
 
-    protected int getInstrument(int index) {
-        return this.instruments[index];
+    protected String[] getInstrumentNames() {
+        return this.instrumentNames;
+    }
+
+    protected int[] getInstrumentList() {
+        return this.instruments;
     }
 }
