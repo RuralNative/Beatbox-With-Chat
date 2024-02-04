@@ -5,7 +5,7 @@ public class Main {
         System.out.println("HI I am John Berlin");
         MusicTest1 test = new MusicTest1();
         test.play();
-        BeatFrame frame = new BeatFrame();
-        frame.createFrame();
+        SimpleGUI frame = new SimpleGUI();
+        frame.go();
     }
 }
