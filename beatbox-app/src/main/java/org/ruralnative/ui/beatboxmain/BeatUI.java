@@ -67,16 +67,16 @@ public class BeatUI {
         buttonBox.add(start);
 
         JButton stop = new JButton("Stop");
-        start.addActionListener(new MyStopListener());
-        buttonBox.add(start);
+        stop.addActionListener(new MyStopListener());
+        buttonBox.add(stop);
 
         JButton upTempo = new JButton("Up Tempo");
-        start.addActionListener(new MyUpTempoListener());
-        buttonBox.add(start);
+        upTempo.addActionListener(new MyUpTempoListener());
+        buttonBox.add(upTempo);
 
         JButton downTempo = new JButton("Down Tempo");
-        start.addActionListener(new MyDownTempoListener());
-        buttonBox.add(start);
+        downTempo.addActionListener(new MyDownTempoListener());
+        buttonBox.add(downTempo);
 
         Box nameBox = new Box(BoxLayout.Y_AXIS);
         for (int i = 0; i < 16; i++) {
