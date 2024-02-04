@@ -1,9 +1,6 @@
 package org.ruralnative.ui.beatboxmain;
 
-import javax.sound.midi.MidiSystem;
-import javax.sound.midi.Sequence;
-import javax.sound.midi.Sequencer;
-import javax.sound.midi.Track;
+import javax.sound.midi.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -181,5 +178,28 @@ public class BeatUI {
             float tempoFactor = player.getTempoFactor();
             player.setTempoFactor((float) (tempoFactor * 0.97));
         }
+    }
+
+    public void makeTracks(int[] list) {
+        for (int i = 0; i < 16; i++) {
+            int key = list[i];
+
+            if (key != 0) {
+                track.add(makeEvent(144, 9, key, 100, i));
+                track.add(makeEvent(128, 9, key, 100, i+1));
+            }
+        }
+    }
+
+    public MidiEvent makeEvent(int command, int channel, int one, int two, int tick) {
+        MidiEvent event = null;
+        try {
+            ShortMessage a = new ShortMessage();
+            a.setMessage(command, channel, one, two);
+            event = new MidiEvent(a, tick);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return event;
     }
 }
