@@ -8,13 +8,16 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class BeatUI {
+    //Serves as the container for all the checkboxes of the instruments
     JPanel mainPanel;
+    //Store checkboxes in a List for index referencing
     ArrayList<JCheckBox> checkBoxList;
     Sequencer player;
     Sequence sequence;
     Track track;
     JFrame frame;
 
+    //Used for Label text inside the nameBox
     String[] instrumentNames = {
             "Bass Drum",
             "Closed Hi-hat",
@@ -33,6 +36,8 @@ public class BeatUI {
             "High Agogo",
             "Open Hi Conga"
     };
+
+    // Used to determine type of instrument as argument for setMessage() channel
     int[] instruments = {
             35,
             42,
@@ -140,10 +145,12 @@ public class BeatUI {
                 }
             }
             makeTracks(trackList);
+
+            // Used for ControllerListener
             track.add(makeEvent(176, 1, 127, 0, 16));
         }
 
-        track.add(makeEvent(176, 1, 127, 0, 16));
+        track.add(makeEvent(192, 9, 1, 0, 15));
         try {
             player.setSequence(sequence);
             player.setLoopCount(player.LOOP_CONTINUOUSLY);
@@ -180,6 +187,7 @@ public class BeatUI {
         }
     }
 
+    // Creates a Track for a Single
     public void makeTracks(int[] list) {
         for (int i = 0; i < 16; i++) {
             int key = list[i];
