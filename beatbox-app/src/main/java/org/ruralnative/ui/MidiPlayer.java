@@ -9,12 +9,15 @@ public class MidiPlayer {
             player.open();
 
             Sequence sequence = new Sequence(Sequence.PPQ, 4);
-
             Track track = sequence.createTrack();
-            track.add(makeEvent(144, 1, 1, 100, 1));
-            track.add(makeEvent(128, 1, 44, 100, 16));
+
+            for (int i = 5; i < 61; i += 4) {
+                track.add(makeEvent(144, 1, i, 100, i));
+                track.add(makeEvent(128, 1, i, 100, i + 2));
+            }
 
             player.setSequence(sequence);
+            player.setTempoInBPM(220);
             player.start();
         } catch (MidiUnavailableException m) {
             System.out.println("MidiUnavailableException THROWN!");
@@ -26,7 +29,7 @@ public class MidiPlayer {
         System.out.println("Initialized SEQUENCER");
     }
 
-    private static MidiEvent makeEvent(int command, int channel, int dataOne, int dataTwo, int tick) {
+    public static MidiEvent makeEvent(int command, int channel, int dataOne, int dataTwo, int tick) {
         MidiEvent note = null;
         try {
             ShortMessage message = new ShortMessage();
