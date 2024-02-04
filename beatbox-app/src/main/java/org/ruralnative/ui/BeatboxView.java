@@ -2,11 +2,11 @@ package org.ruralnative.ui;
 
 import javax.swing.*;
 
-public class BeatboxView extends JFrame {
+class BeatboxView extends JFrame {
 
     private JButton button;
 
-    BeatboxView() {
+    public BeatboxView() {
         super("Beat Box App");
         button = new JButton("Click Me");
         add(button);
