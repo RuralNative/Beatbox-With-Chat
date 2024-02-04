@@ -6,6 +6,8 @@ import javax.sound.midi.Sequencer;
 import javax.sound.midi.Track;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class BeatUI {
@@ -154,7 +156,30 @@ public class BeatUI {
             e.printStackTrace();
         }
     }
-    
 
+    public class MyStartListener implements ActionListener {
+        public void actionPerformed(ActionEvent a) {
+            buildTrackAndStart();
+        }
+    }
 
+    public class MyStopListener implements ActionListener {
+        public void actionPerformed(ActionEvent a) {
+            player.stop();
+        }
+    }
+
+    public class MyUpTempoListener implements ActionListener {
+        public void actionPerformed(ActionEvent a) {
+            float tempoFactor = player.getTempoFactor();
+            player.setTempoFactor((float) (tempoFactor * 1.03));
+        }
+    }
+
+    public class MyDownTempoListener implements ActionListener {
+        public void actionPerformed(ActionEvent a) {
+            float tempoFactor = player.getTempoFactor();
+            player.setTempoFactor((float) (tempoFactor * 0.97));
+        }
+    }
 }
