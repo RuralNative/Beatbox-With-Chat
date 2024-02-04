@@ -19,7 +19,6 @@ public class BeatUI {
     JFrame frame;
 
     public BeatUI() {
-
     }
 
     public void buildGUI() {
@@ -29,7 +28,7 @@ public class BeatUI {
         JPanel background = new JPanel(layout);
         background.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        checkBoxList = new ArrayList<JCheckBox>();
+        checkBoxList = new ArrayList<>();
         Box buttonBox = new Box(BoxLayout.Y_AXIS);
 
         JButton start = new JButton("Start");

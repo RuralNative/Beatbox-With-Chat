@@ -48,9 +48,8 @@ public class BeatboxModel {
         return this.checkBoxList;
     }
 
-    protected String setCheckBoxList(ArrayList<JCheckBox> list) {
+    protected void setCheckBoxList(ArrayList<JCheckBox> list) {
         this.checkBoxList = list;
-        return "CheckBoxList INSTANTIATED";
     }
 
     protected String[] getInstrumentNames() {
