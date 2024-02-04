@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="928d2191-848c-4b62-8eba-dea2f206dc3c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ruralnative/BeatFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ruralnative/BeatFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ruralnative/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ruralnative/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ruralnative/MusicTest1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ruralnative/ui/MusicTest1.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +79,7 @@
       <option name="VM_PARAMETERS" value="--module-path &quot;F:\Installers\JavaFX\javafx-sdk-19\lib&quot; --add-modules=javafx.base,javafx.controls,javafx.fxml,javafx.graphics,javafx.media,javafx.swing,javafx.web,javafx.swt" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.ruralnative.*" />
+          <option name="PATTERN" value="org.ruralnative.ui.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>

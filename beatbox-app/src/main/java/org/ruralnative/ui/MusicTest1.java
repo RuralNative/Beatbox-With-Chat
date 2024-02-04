@@ -1,8 +1,8 @@
-package org.ruralnative;
+package org.ruralnative.ui;
 
 import javax.sound.midi.*;
 
-public class MusicTest1 {
+public class BeatboxViewModel {
 
     public void play() {
         try {
