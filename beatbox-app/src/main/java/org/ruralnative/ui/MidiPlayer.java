@@ -11,27 +11,31 @@ public class MidiPlayer {
             Sequence sequence = new Sequence(Sequence.PPQ, 4);
 
             Track track = sequence.createTrack();
-
-            ShortMessage messageOne = new ShortMessage();
-            messageOne.setMessage(144, 1, 1, 100);
-            MidiEvent noteOn = new MidiEvent(messageOne, 1);
-            track.add(noteOn);
-
-            ShortMessage messageTwo = new ShortMessage();
-            messageTwo.setMessage(128, 1, 44, 100);
-            MidiEvent noteOff = new MidiEvent(messageTwo, 32);
-            track.add(noteOff);
+            track.add(makeEvent(144, 1, 1, 100, 1));
+            track.add(makeEvent(128, 1, 44, 100, 16));
 
             player.setSequence(sequence);
-
             player.start();
         } catch (MidiUnavailableException m) {
             System.out.println("MidiUnavailableException THROWN!");
             System.out.println("Please check if MIDI device is used by another process.");
-        } catch (InvalidMidiDataException i) {
+        } catch (InvalidMidiDataException e) {
             System.out.println("InvalidMidiDataException THROWN!");
             System.out.println("Please check if Sequence data is valid.");
         }
         System.out.println("Initialized SEQUENCER");
+    }
+
+    private static MidiEvent makeEvent(int command, int channel, int dataOne, int dataTwo, int tick) {
+        MidiEvent note = null;
+        try {
+            ShortMessage message = new ShortMessage();
+            message.setMessage(command, channel, dataOne, dataTwo);
+            note = new MidiEvent(message, tick);
+        } catch (InvalidMidiDataException e) {
+            System.out.println("InvalidMidiDataException THROWN!");
+            System.out.println("Please check if MidiEvent data is valid.");
+        }
+        return note;
     }
 }
