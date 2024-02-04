@@ -1,11 +1,13 @@
 package org.ruralnative.ui.beatbox;
 
+import javax.sound.midi.Sequence;
+import javax.sound.midi.Sequencer;
+import javax.sound.midi.Track;
 import javax.swing.*;
 import java.util.ArrayList;
 
 public class BeatboxModel {
     private ArrayList<JCheckBox> checkBoxList;
-
     private final String[] instrumentNames = {
             "Bass Drum",
             "Closed Hi-hat",
@@ -24,7 +26,6 @@ public class BeatboxModel {
             "High Agogo",
             "Open Hi Conga"
     };
-
     private final int[] instruments = {
             35,
             42,
@@ -43,20 +44,38 @@ public class BeatboxModel {
             67,
             63
     };
+    private Sequencer player;
+    private Sequence sequence;
+    private Track track;
 
     protected ArrayList<JCheckBox> getCheckBoxList() {
         return this.checkBoxList;
     }
-
     protected void setCheckBoxList(ArrayList<JCheckBox> list) {
         this.checkBoxList = list;
     }
-
     protected String[] getInstrumentNames() {
         return this.instrumentNames;
     }
-
     protected int[] getInstrumentList() {
         return this.instruments;
+    }
+    protected Sequencer getPlayer() {
+        return this.player;
+    }
+    protected void setPlayer(Sequencer player) {
+        this.player = player;
+    }
+    protected Sequence getSequence() {
+        return this.sequence;
+    }
+    protected void setSequence(Sequence sequence) {
+        this.sequence = sequence;
+    }
+    protected Track getTrack() {
+        return this.track;
+    }
+    protected void setTrack(Track track) {
+        this.track = track;
     }
 }
