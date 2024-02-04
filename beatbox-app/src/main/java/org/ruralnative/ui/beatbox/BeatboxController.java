@@ -4,13 +4,13 @@ import javax.sound.midi.*;
 
 public class BeatboxController {
 
-    private BeatBoxModel model;
-    private BeatboxView view;
+    private final BeatBoxModel model;
+    private final BeatboxView view;
 
     public BeatboxController() {
         this.model = new BeatBoxModel();
         this.view = new BeatboxView();
-        //view.getButton().addActionListener(e -> handleButton());
+        view.getButton().addActionListener(e -> handleButton());
 
         play();
     }
@@ -45,11 +45,6 @@ public class BeatboxController {
         System.out.println("Initialized SEQUENCER");
     }
 
-    private void handleMidiEvent() {
-        System.out.println("NOTE ON/OFF Fired!");
-        view.repaint();
-    }
-
     MidiEvent makeEvent(int command, int channel, int dataOne, int dataTwo, int tick) {
         MidiEvent note = null;
         try {
@@ -64,6 +59,12 @@ public class BeatboxController {
     }
 
     private void handleButton() {
+        System.out.println("BUTTON Clicked!");
         play();
+    }
+
+    private void handleMidiEvent() {
+        System.out.println("NOTE ON/OFF Fired!");
+        view.repaint();
     }
 }

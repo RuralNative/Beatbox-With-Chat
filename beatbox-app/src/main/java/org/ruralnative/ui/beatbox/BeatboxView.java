@@ -1,18 +1,22 @@
 package org.ruralnative.ui.beatbox;
 
-import org.ruralnative.DrawPanel;
-
 import javax.swing.*;
 import java.awt.*;
 
 class BeatboxView extends JFrame {
+    private Container container;
+    private DrawPanel panel;
     private JButton button;
 
     public BeatboxView() {
         super("Beat Box App");
 
-        DrawPanel panel = new DrawPanel();
-        add(panel);
+        panel = new DrawPanel();
+        button = new JButton("Click Me");
+
+        container = getContentPane();
+        container.add(BorderLayout.CENTER, panel);
+        container.add(BorderLayout.SOUTH, button);
 
         setSize(300, 300);
         setVisible(true);
