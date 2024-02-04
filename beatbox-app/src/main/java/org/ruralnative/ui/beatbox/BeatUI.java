@@ -19,6 +19,8 @@ public class BeatUI {
     JFrame frame;
 
     public BeatUI() {
+        controller = new BeatboxController();
+        checkBoxList = controller.instantiateCheckBoxList();
     }
 
     public void buildGUI() {

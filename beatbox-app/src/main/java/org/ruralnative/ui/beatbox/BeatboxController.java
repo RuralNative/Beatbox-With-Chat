@@ -9,7 +9,6 @@ public class BeatboxController {
 
     protected BeatboxController() {
         this.model = new BeatboxModel();
-        this.view = new BeatUI();
     }
 
     protected ArrayList<JCheckBox> instantiateCheckBoxList() {
