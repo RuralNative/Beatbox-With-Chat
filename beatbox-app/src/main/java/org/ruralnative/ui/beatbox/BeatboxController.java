@@ -47,6 +47,7 @@ public class BeatboxController {
 
     private void handleMidiEvent() {
         System.out.println("NOTE ON/OFF Fired!");
+        view.repaint();
     }
 
     MidiEvent makeEvent(int command, int channel, int dataOne, int dataTwo, int tick) {
