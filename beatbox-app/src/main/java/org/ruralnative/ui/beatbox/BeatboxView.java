@@ -8,6 +8,9 @@ public class BeatboxView {
     BeatboxController controller;
     ArrayList<JCheckBox> checkBoxList;
     JFrame frame;
+    JPanel backgroundPanel;
+    Box buttonBox;
+    Box nameBox;
     JPanel mainPanel;
     JButton start;
     JButton stop;
@@ -24,42 +27,25 @@ public class BeatboxView {
         frame = new JFrame("Cyber Beatbox");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         BorderLayout layout = new BorderLayout();
-        JPanel background = new JPanel(layout);
-        background.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        Box buttonBox = new Box(BoxLayout.Y_AXIS);
-
-        setUpButtons(buttonBox);
-
-        Box nameBox = new Box(BoxLayout.Y_AXIS);
-        for (int i = 0; i < 16; i++) {
-            nameBox.add(new Label(controller.getInstrumentName(i)));
-        }
-
-        background.add(BorderLayout.EAST, buttonBox);
-        background.add(BorderLayout.WEST, nameBox);
-
-        frame.getContentPane().add(background);
-
-        GridLayout grid = new GridLayout(16, 16);
-        grid.setVgap(1);
-        grid.setHgap(1);
-        mainPanel = new JPanel(grid);
-        background.add(BorderLayout.CENTER, mainPanel);
-
-        for (int i = 0; i < 256; i++) {
-            JCheckBox c = new JCheckBox();
-            c.setSelected(false);
-            checkBoxList.add(c);
-            mainPanel.add(c);
-        }
-
+        backgroundPanel = new JPanel(layout);
+        backgroundPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        backgroundPanel.add(BorderLayout.WEST, nameBox);
+        setUpLabels();
+        setUpMainPanel();
+        backgroundPanel.add(BorderLayout.CENTER, mainPanel);
+        setUpButtons();
+        backgroundPanel.add(BorderLayout.EAST, buttonBox);
+        frame.getContentPane().add(backgroundPanel);
+        
         frame.setBounds(50, 50, 300, 300);
         frame.pack();
         frame.setVisible(true);
     }
 
-    private void setUpButtons(Box buttonBox) {
+    private void setUpButtons() {
+        buttonBox = new Box(BoxLayout.Y_AXIS);
+
         start = new JButton("Start");
         start.addActionListener(action -> controller.handleStartButton());
         buttonBox.add(start);
@@ -75,5 +61,26 @@ public class BeatboxView {
         downTempo = new JButton("Down Tempo");
         downTempo.addActionListener(action -> controller.handleDownTempoButton());
         buttonBox.add(downTempo);
+    }
+
+    private void setUpLabels() {
+        nameBox = new Box(BoxLayout.Y_AXIS);
+        for (int i = 0; i < 16; i++) {
+            nameBox.add(new Label(controller.getInstrumentName(i)));
+        }
+    }
+
+    private void setUpMainPanel() {
+        GridLayout checkBoxGrid = new GridLayout(16, 16);
+        checkBoxGrid.setVgap(1);
+        checkBoxGrid.setHgap(1);
+
+        mainPanel = new JPanel(checkBoxGrid);
+        for (int i = 0; i < 256; i++) {
+            JCheckBox c = new JCheckBox();
+            c.setSelected(false);
+            checkBoxList.add(c);
+            mainPanel.add(c);
+        }
     }
 }
