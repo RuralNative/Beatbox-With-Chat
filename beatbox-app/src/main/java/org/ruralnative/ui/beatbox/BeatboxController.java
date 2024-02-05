@@ -2,8 +2,6 @@ package org.ruralnative.ui.beatbox;
 
 import javax.sound.midi.*;
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class BeatboxController {
@@ -14,9 +12,11 @@ public class BeatboxController {
     private Track track;
     int[] trackList = null;
 
-    protected BeatboxController() {
+    protected BeatboxController(BeatUI view) {
+        this.view = view;
         this.model = new BeatboxModel();
         setupMidi();
+
     }
 
     protected ArrayList<JCheckBox> instantiateCheckBoxList() {

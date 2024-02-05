@@ -14,7 +14,7 @@ public class BeatUI {
     JPanel mainPanel;
 
     public BeatUI() {
-        controller = new BeatboxController();
+        controller = new BeatboxController(this);
         checkBoxList = controller.instantiateCheckBoxList();
     }
 
