@@ -18,7 +18,7 @@ public class BeatboxView {
     JButton downTempo;
 
     public BeatboxView() {
-        controller = new BeatboxController(this);
+        controller = new BeatboxController();
         checkBoxList = controller.instantiateCheckBoxList();
         buildGUI();
     }

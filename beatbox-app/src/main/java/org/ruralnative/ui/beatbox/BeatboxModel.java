@@ -1,8 +1,5 @@
 package org.ruralnative.ui.beatbox;
 
-import javax.sound.midi.Sequence;
-import javax.sound.midi.Sequencer;
-import javax.sound.midi.Track;
 import javax.swing.*;
 import java.util.ArrayList;
 

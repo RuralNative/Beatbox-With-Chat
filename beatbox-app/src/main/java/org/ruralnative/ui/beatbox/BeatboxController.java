@@ -5,21 +5,19 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 public class BeatboxController {
-    private BeatboxModel model;
-    private BeatboxView view;
+    private final BeatboxModel model;
     private Sequencer player;
     private Sequence sequence;
     private Track track;
     int[] trackList = null;
 
-    protected BeatboxController(BeatboxView view) {
+    protected BeatboxController() {
         this.model = new BeatboxModel();
         setupMidi();
-
     }
 
     protected ArrayList<JCheckBox> instantiateCheckBoxList() {
-        model.setCheckBoxList(new ArrayList<JCheckBox>());
+        model.setCheckBoxList(new ArrayList<>());
         return model.getCheckBoxList();
     }
 
@@ -31,7 +29,7 @@ public class BeatboxController {
         return model.getInstrumentList()[index];
     }
 
-    public void setupMidi() {
+    private void setupMidi() {
         try {
             this.player = MidiSystem.getSequencer();
             player.open();
@@ -45,29 +43,29 @@ public class BeatboxController {
         }
     }
 
-    public void buildTrackAndStart() {
+    private void buildTrackAndStart() {
         sequence.deleteTrack(track);
         track = sequence.createTrack();
-        readInstrumentBox(trackList);
-        track.add(makeEvent(192, 9, 1, 0, 15));
+        readInstrumentBox();
         startPlayer();
     }
 
-    private void readInstrumentBox(int[] list) {
+    private void readInstrumentBox() {
         for (int i = 0; i < 16; i++) {
-            list = new int[16];
+            trackList = new int[16];
             int key = getInstrument(i);
             for (int j = 0; j < 16; j++) {
                 JCheckBox jc = model.getCheckBoxList().get(j + (16*i));
                 if (jc.isSelected()) {
-                    list[j] = key;
+                    trackList[j] = key;
                 } else {
-                    list[j] = 0;
+                    trackList[j] = 0;
                 }
             }
-            makeTracks(list);
-            track.add(makeEvent(176, 1, 127, 0, 16));
+            makeTracks(trackList);
+            track.add(makeEvent(176, 1, 127, 0, 16)); //For ControllerListener
         }
+        track.add(makeEvent(192, 9, 1, 0, 15));
     }
 
     private void makeTracks(int[] list) {
