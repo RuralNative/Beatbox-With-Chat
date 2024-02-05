@@ -27,24 +27,9 @@ public class BeatboxView {
         JPanel background = new JPanel(layout);
         background.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        checkBoxList = new ArrayList<>();
         Box buttonBox = new Box(BoxLayout.Y_AXIS);
 
-        start = new JButton("Start");
-        start.addActionListener(action -> controller.handleStartButton());
-        buttonBox.add(start);
-
-        stop = new JButton("Stop");
-        stop.addActionListener(action -> controller.handleStopButton());
-        buttonBox.add(stop);
-
-        upTempo = new JButton("Up Tempo");
-        upTempo.addActionListener(action -> controller.handleUpTempoButton());
-        buttonBox.add(upTempo);
-
-        downTempo = new JButton("Down Tempo");
-        downTempo.addActionListener(action -> controller.handleDownTempoButton());
-        buttonBox.add(downTempo);
+        setUpButtons(buttonBox);
 
         Box nameBox = new Box(BoxLayout.Y_AXIS);
         for (int i = 0; i < 16; i++) {
@@ -72,5 +57,23 @@ public class BeatboxView {
         frame.setBounds(50, 50, 300, 300);
         frame.pack();
         frame.setVisible(true);
+    }
+
+    private void setUpButtons(Box buttonBox) {
+        start = new JButton("Start");
+        start.addActionListener(action -> controller.handleStartButton());
+        buttonBox.add(start);
+
+        stop = new JButton("Stop");
+        stop.addActionListener(action -> controller.handleStopButton());
+        buttonBox.add(stop);
+
+        upTempo = new JButton("Up Tempo");
+        upTempo.addActionListener(action -> controller.handleUpTempoButton());
+        buttonBox.add(upTempo);
+
+        downTempo = new JButton("Down Tempo");
+        downTempo.addActionListener(action -> controller.handleDownTempoButton());
+        buttonBox.add(downTempo);
     }
 }
