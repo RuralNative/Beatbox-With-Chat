@@ -12,6 +12,7 @@ public class BeatboxController {
     private Sequencer player;
     private Sequence sequence;
     private Track track;
+    int[] trackList = null;
 
     protected BeatboxController() {
         this.model = new BeatboxModel();
@@ -46,22 +47,11 @@ public class BeatboxController {
     }
 
     public void buildTrackAndStart() {
-        int[] trackList = null;
-
         sequence.deleteTrack(track);
         track = sequence.createTrack();
-
         readInstrumentBox(trackList);
-
         track.add(makeEvent(192, 9, 1, 0, 15));
-        try {
-            player.setSequence(sequence);
-            player.setLoopCount(player.LOOP_CONTINUOUSLY);
-            player.start();
-            player.setTempoInBPM(120);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        startPlayer();
     }
 
     private void readInstrumentBox(int[] list) {
@@ -81,7 +71,7 @@ public class BeatboxController {
         }
     }
 
-    public void makeTracks(int[] list) {
+    private void makeTracks(int[] list) {
         for (int i = 0; i < 16; i++) {
             int key = list[i];
             if (key != 0) {
@@ -91,7 +81,7 @@ public class BeatboxController {
         }
     }
 
-    public MidiEvent makeEvent(int command, int channel, int one, int two, int tick) {
+    private MidiEvent makeEvent(int command, int channel, int one, int two, int tick) {
         MidiEvent event = null;
         try {
             ShortMessage a = new ShortMessage();
@@ -103,6 +93,19 @@ public class BeatboxController {
             System.out.println("Arguments for setMessage() or MidiEvent constructor does not specify a valid MidiMessage");
         }
         return event;
+    }
+
+    private void startPlayer() {
+        try {
+            player.setSequence(sequence);
+            player.setLoopCount(player.LOOP_CONTINUOUSLY);
+            player.start();
+            player.setTempoInBPM(120);
+        } catch (InvalidMidiDataException e) {
+            System.out.println("Sequence Instantiation FAILED");
+            System.out.println("SOURCE: buildTrackAndStart()");
+            System.out.println("Sequence contains invalid/unsupported data");
+        }
     }
 
     private void handleStartButton() {
