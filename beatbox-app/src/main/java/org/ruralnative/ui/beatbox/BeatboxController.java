@@ -46,11 +46,11 @@ public class BeatboxController {
     private void buildTrackAndStart() {
         sequence.deleteTrack(track);
         track = sequence.createTrack();
-        readInstrumentBox();
+        interpretBeats();
         startPlayer();
     }
 
-    private void readInstrumentBox() {
+    private void interpretBeats() {
         for (int i = 0; i < 16; i++) {
             trackList = new int[16];
             int key = getInstrument(i);
