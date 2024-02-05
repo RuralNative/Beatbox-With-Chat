@@ -30,14 +30,14 @@ public class BeatboxView {
 
         backgroundPanel = new JPanel(layout);
         backgroundPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        backgroundPanel.add(BorderLayout.WEST, nameBox);
         setUpLabels();
+        backgroundPanel.add(BorderLayout.WEST, nameBox);
         setUpMainPanel();
         backgroundPanel.add(BorderLayout.CENTER, mainPanel);
         setUpButtons();
         backgroundPanel.add(BorderLayout.EAST, buttonBox);
         frame.getContentPane().add(backgroundPanel);
-        
+
         frame.setBounds(50, 50, 300, 300);
         frame.pack();
         frame.setVisible(true);
