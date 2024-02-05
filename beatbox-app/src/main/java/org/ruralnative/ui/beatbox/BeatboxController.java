@@ -6,14 +6,13 @@ import java.util.ArrayList;
 
 public class BeatboxController {
     private BeatboxModel model;
-    private BeatUI view;
+    private BeatboxView view;
     private Sequencer player;
     private Sequence sequence;
     private Track track;
     int[] trackList = null;
 
-    protected BeatboxController(BeatUI view) {
-        this.view = view;
+    protected BeatboxController(BeatboxView view) {
         this.model = new BeatboxModel();
         setupMidi();
 
@@ -108,20 +107,20 @@ public class BeatboxController {
         }
     }
 
-    private void handleStartButton() {
+    protected void handleStartButton() {
         buildTrackAndStart();
     }
 
-    private void handleStopButton() {
+    protected void handleStopButton() {
         player.stop();
     }
 
-    private void handleUpTempoButton() {
+    protected void handleUpTempoButton() {
         float tempoFactor = player.getTempoFactor();
         player.setTempoFactor((float) (tempoFactor * 1.03));
     }
 
-    private void handleDownTempoButton() {
+    protected void handleDownTempoButton() {
         float tempoFactor = player.getTempoFactor();
         player.setTempoFactor((float) (tempoFactor * 0.97));
     }
