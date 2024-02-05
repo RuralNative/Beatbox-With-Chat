@@ -9,14 +9,9 @@ import java.util.ArrayList;
 
 public class BeatUI {
     BeatboxController controller;
-    //Serves as the container for all the checkboxes of the instruments
-    JPanel mainPanel;
-    //Store checkboxes in a List for index referencing
     ArrayList<JCheckBox> checkBoxList;
-    Sequencer player;
-    Sequence sequence;
-    Track track;
     JFrame frame;
+    JPanel mainPanel;
 
     public BeatUI() {
         controller = new BeatboxController();
@@ -34,19 +29,15 @@ public class BeatUI {
         Box buttonBox = new Box(BoxLayout.Y_AXIS);
 
         JButton start = new JButton("Start");
-        start.addActionListener(new MyStartListener());
         buttonBox.add(start);
 
         JButton stop = new JButton("Stop");
-        stop.addActionListener(new MyStopListener());
         buttonBox.add(stop);
 
         JButton upTempo = new JButton("Up Tempo");
-        upTempo.addActionListener(new MyUpTempoListener());
         buttonBox.add(upTempo);
 
         JButton downTempo = new JButton("Down Tempo");
-        downTempo.addActionListener(new MyDownTempoListener());
         buttonBox.add(downTempo);
 
         Box nameBox = new Box(BoxLayout.Y_AXIS);
@@ -71,8 +62,6 @@ public class BeatUI {
             checkBoxList.add(c);
             mainPanel.add(c);
         }
-
-        controller.setupMidi();
 
         frame.setBounds(50, 50, 300, 300);
         frame.pack();

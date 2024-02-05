@@ -9,9 +9,13 @@ import java.util.ArrayList;
 public class BeatboxController {
     private BeatboxModel model;
     private BeatUI view;
+    private Sequencer player;
+    private Sequence sequence;
+    private Track track;
 
     protected BeatboxController() {
         this.model = new BeatboxModel();
+        setupMidi();
     }
 
     protected ArrayList<JCheckBox> instantiateCheckBoxList() {
@@ -29,14 +33,15 @@ public class BeatboxController {
 
     public void setupMidi() {
         try {
-            model.setPlayer(MidiSystem.getSequencer());
-            model.getPlayer().open();
-            model.setSequence(new Sequence(Sequence.PPQ, 4));
-            model.setTrack(model.getSequence().createTrack());
-            model.getPlayer().setTempoInBPM(120);
+            this.player = MidiSystem.getSequencer();
+            player.open();
+            this.sequence = new Sequence(Sequence.PPQ, 4);
+            this.track = sequence.createTrack();
+            player.setTempoInBPM(120);
         } catch (Exception e) {
             System.out.println("Midi Setup FAILED");
-            System.out.println("Check setupMidi()");
+            System.out.println("SOURCE: setupMidi()");
+            System.out.println("MIDI device cannot be opened OR division type (default of PPQ) is invalid");
         }
     }
 

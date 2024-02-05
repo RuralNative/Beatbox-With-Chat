@@ -44,10 +44,6 @@ public class BeatboxModel {
             67,
             63
     };
-    private Sequencer player;
-    private Sequence sequence;
-    private Track track;
-
     protected ArrayList<JCheckBox> getCheckBoxList() {
         return this.checkBoxList;
     }
@@ -59,23 +55,5 @@ public class BeatboxModel {
     }
     protected int[] getInstrumentList() {
         return this.instruments;
-    }
-    protected Sequencer getPlayer() {
-        return this.player;
-    }
-    protected void setPlayer(Sequencer player) {
-        this.player = player;
-    }
-    protected Sequence getSequence() {
-        return this.sequence;
-    }
-    protected void setSequence(Sequence sequence) {
-        this.sequence = sequence;
-    }
-    protected Track getTrack() {
-        return this.track;
-    }
-    protected void setTrack(Track track) {
-        this.track = track;
     }
 }
