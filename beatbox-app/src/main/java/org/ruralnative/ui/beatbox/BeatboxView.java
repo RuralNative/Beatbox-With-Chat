@@ -1,21 +1,23 @@
 package org.ruralnative.ui.beatbox;
 
-import javax.sound.midi.*;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class BeatUI {
+public class BeatboxView {
     BeatboxController controller;
     ArrayList<JCheckBox> checkBoxList;
     JFrame frame;
     JPanel mainPanel;
+    JButton start;
+    JButton stop;
+    JButton upTempo;
+    JButton downTempo;
 
-    public BeatUI() {
+    public BeatboxView() {
         controller = new BeatboxController(this);
         checkBoxList = controller.instantiateCheckBoxList();
+        buildGUI();
     }
 
     public void buildGUI() {
@@ -28,16 +30,20 @@ public class BeatUI {
         checkBoxList = new ArrayList<>();
         Box buttonBox = new Box(BoxLayout.Y_AXIS);
 
-        JButton start = new JButton("Start");
+        start = new JButton("Start");
+        start.addActionListener(action -> controller.handleStartButton());
         buttonBox.add(start);
 
-        JButton stop = new JButton("Stop");
+        stop = new JButton("Stop");
+        stop.addActionListener(action -> controller.handleStopButton());
         buttonBox.add(stop);
 
-        JButton upTempo = new JButton("Up Tempo");
+        upTempo = new JButton("Up Tempo");
+        upTempo.addActionListener(action -> controller.handleUpTempoButton());
         buttonBox.add(upTempo);
 
-        JButton downTempo = new JButton("Down Tempo");
+        downTempo = new JButton("Down Tempo");
+        downTempo.addActionListener(action -> controller.handleDownTempoButton());
         buttonBox.add(downTempo);
 
         Box nameBox = new Box(BoxLayout.Y_AXIS);
