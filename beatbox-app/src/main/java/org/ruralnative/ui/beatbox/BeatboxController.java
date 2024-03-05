@@ -2,10 +2,7 @@ package org.ruralnative.ui.beatbox;
 
 import javax.sound.midi.*;
 import javax.swing.*;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.ArrayList;
 
 public class BeatboxController {
@@ -146,12 +143,30 @@ public class BeatboxController {
             outputStream.writeObject(checkBoxState);
         } catch (Exception e) {
             System.out.println("Beat Serialization FAILED");
-            System.out.println("SOURCE: handleRestoreBeat()");
-            System.out.println("File not found or can't be created for saving, or an I/O error occured");
+            System.out.println("SOURCE: handleSerializeBeatButton()");
+            System.out.println("File not found or can't be created for saving, or an I/O error occurred");
         }
     }
 
     protected void handleRestoreBeatButton() {
-        
+        boolean[] checkBoxState = null;
+        try {
+            FileInputStream fileStream =  new FileInputStream(new File("CheckBox_Serialized"));
+            ObjectInputStream inputStream = new ObjectInputStream(fileStream);
+            checkBoxState = (boolean[]) inputStream.readObject();
+        } catch (Exception e) {
+            System.out.println("Beat Restoration FAILED");
+            System.out.println("SOURCE: handleRestoreBeatButton()");
+            System.out.println("File not found or can't be created for saving, or an I/O error occurred");
+        }
+        for (int i = 0;  i < 256; i++) {
+            JCheckBox checkBox = (JCheckBox) model.getCheckBoxList().get(i);
+            assert checkBoxState != null;
+            if (checkBoxState[i]) {
+                checkBox.setSelected(true);
+            } else {
+                checkBox.setSelected(false);
+            }
+        }
     }
 }
