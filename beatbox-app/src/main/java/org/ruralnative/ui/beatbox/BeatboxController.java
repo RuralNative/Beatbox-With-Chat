@@ -2,6 +2,10 @@ package org.ruralnative.ui.beatbox;
 
 import javax.sound.midi.*;
 import javax.swing.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class BeatboxController {
@@ -121,5 +125,33 @@ public class BeatboxController {
     protected void handleDownTempoButton() {
         float tempoFactor = player.getTempoFactor();
         player.setTempoFactor((float) (tempoFactor * 0.97));
+    }
+
+    protected void handleSerializeBeat() {
+        float tempoFactor = player.getTempoFactor();
+        player.setTempoFactor((float) (tempoFactor * 0.97));
+    }
+
+    protected void handleSerializeBeatButton() {
+        boolean[] checkBoxState = new boolean[256];
+        for (int i = 0; i < 256; i++) {
+            JCheckBox check = (JCheckBox)  model.getCheckBoxList().get(i);
+            if (check.isSelected()) {
+                checkBoxState[i] = true;
+            }
+        }
+        try {
+            FileOutputStream fileStream = new FileOutputStream(new File("CheckBox_Serialized"));
+            ObjectOutputStream outputStream = new ObjectOutputStream(fileStream);
+            outputStream.writeObject(checkBoxState);
+        } catch (Exception e) {
+            System.out.println("Beat Serialization FAILED");
+            System.out.println("SOURCE: handleRestoreBeat()");
+            System.out.println("File not found or can't be created for saving, or an I/O error occured");
+        }
+    }
+
+    protected void handleRestoreBeatButton() {
+        
     }
 }
