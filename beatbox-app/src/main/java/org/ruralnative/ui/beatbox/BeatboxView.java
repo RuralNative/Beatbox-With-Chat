@@ -61,6 +61,14 @@ public class BeatboxView {
         downTempo = new JButton("Down Tempo");
         downTempo.addActionListener(action -> controller.handleDownTempoButton());
         buttonBox.add(downTempo);
+
+        serializeBeat = new JButton("Save Beat");
+        serializeBeat.addActionListener(action -> controller.handleSerializeBeatButton());
+        buttonBox.add(serializeBeat);
+
+        restoreBeat = new JButton("Restore Beat");
+        restoreBeat.addActionListener(action -> controller.handleRestoreBeatButton());
+        buttonBox.add(restoreBeat);
     }
 
     private void setUpLabels() {
