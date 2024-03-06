@@ -6,15 +6,15 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-public class Network {
-    String ipAddress = "";
-    int portNumber = 0;
+public class ChatClient {
+    String ipAddress;
+    int portNumber;
     Socket chatSocket;
     InputStreamReader inputStreamReader;
     BufferedReader networkReader;
     PrintWriter networkWriter;
 
-    Network(String ipAddress, int portNumber) {
+    ChatClient(String ipAddress, int portNumber) {
         this.ipAddress = ipAddress;
         this.portNumber = portNumber;
         try {
