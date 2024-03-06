@@ -1,6 +1,7 @@
 package org.ruralnative.network;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
@@ -42,5 +43,15 @@ public class Network {
 
     public void sendMessage(String message) {
         networkWriter.println(message);
+    }
+
+    public void closeConnection() {
+        try {
+            chatSocket.close();
+        } catch (IOException e) {
+            System.out.println("Socket Connection Closing FAILED");
+            System.out.println("SOURCE: closeConnection()");
+            System.out.println("I/O error occurred");
+        }
     }
 }
