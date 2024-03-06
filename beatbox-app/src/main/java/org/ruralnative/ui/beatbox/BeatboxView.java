@@ -16,6 +16,9 @@ public class BeatboxView {
     JButton stop;
     JButton upTempo;
     JButton downTempo;
+    JButton serializeBeat;
+    JButton restoreBeat;
+
 
     public BeatboxView() {
         controller = new BeatboxController();
