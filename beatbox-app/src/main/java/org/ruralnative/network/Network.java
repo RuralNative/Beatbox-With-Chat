@@ -1,5 +1,6 @@
 package org.ruralnative.network;
 
+import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.Socket;
 
@@ -8,17 +9,37 @@ public class Network {
     int portNumber = 0;
     Socket chatSocket;
     InputStreamReader inputStreamReader;
+    BufferedReader networkReader;
 
     Network(String ipAddress, int portNumber) {
         this.ipAddress = ipAddress;
         this.portNumber = portNumber;
         try {
-            chatSocket = new Socket(ipAddress, portNumber);
+            chatSocket = new Socket(this.ipAddress, this.portNumber);
             this.inputStreamReader = new InputStreamReader(chatSocket.getInputStream());
+            this.networkReader = new BufferedReader(this.inputStreamReader);
         } catch (Exception e) {
             System.out.println("Network Connection Init FAILED");
             System.out.println("SOURCE: Network()");
-            System.out.println("IP/Port unidentified or I/O error occured");
+            System.out.println("IP/Port unidentified or I/O error occurred");
+        }
+    }
+
+    public String readMessage() {
+        String message = "Empty Network Message";
+        try {
+            message = networkReader.readLine();
+        } catch (Exception e) {
+            System.out.println("Read Network Message FAILED");
+            System.out.println("SOURCE: readMessage()");
+            System.out.println("I/O error occurred");
+        }
+        return message;
+    }
+
+    public void sendMessage(String message) {
+        try {
+        } catch (Exception e) {
         }
     }
 }
