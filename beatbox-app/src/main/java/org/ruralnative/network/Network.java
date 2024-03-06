@@ -2,6 +2,7 @@ package org.ruralnative.network;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.Socket;
 
 public class Network {
@@ -10,6 +11,7 @@ public class Network {
     Socket chatSocket;
     InputStreamReader inputStreamReader;
     BufferedReader networkReader;
+    PrintWriter networkWriter;
 
     Network(String ipAddress, int portNumber) {
         this.ipAddress = ipAddress;
@@ -18,6 +20,7 @@ public class Network {
             chatSocket = new Socket(this.ipAddress, this.portNumber);
             this.inputStreamReader = new InputStreamReader(chatSocket.getInputStream());
             this.networkReader = new BufferedReader(this.inputStreamReader);
+            this.networkWriter = new PrintWriter(chatSocket.getOutputStream());
         } catch (Exception e) {
             System.out.println("Network Connection Init FAILED");
             System.out.println("SOURCE: Network()");
@@ -38,8 +41,6 @@ public class Network {
     }
 
     public void sendMessage(String message) {
-        try {
-        } catch (Exception e) {
-        }
+        networkWriter.println(message);
     }
 }
