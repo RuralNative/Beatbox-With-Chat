@@ -14,7 +14,7 @@ public class ChatClient {
     BufferedReader networkReader;
     PrintWriter networkWriter;
 
-    ChatClient(String ipAddress, int portNumber) {
+    public ChatClient(String ipAddress, int portNumber) {
         this.ipAddress = ipAddress;
         this.portNumber = portNumber;
         try {
